@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Decorator">
+    <packagedElement xmi:type="uml:Package" xmi:id="p09_pk9" name="09 - Decorator">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p09_cm10"><body>But : ajouter des responsabilités à un objet dynamiquement, sans héritage.</body></ownedComment>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p09_c1" name="Boisson" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p09_o11" name="prix" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p09_pa12" direction="return" type="p09_t13"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p09_c2" name="Cafe">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p09_r14" client="p09_c2" supplier="p09_c1" contract="p09_c1"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p09_o15" name="prix" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p09_pa16" direction="return" type="p09_t13"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p09_c3" name="BoissonDecorator" isAbstract="true">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p09_r17" client="p09_c3" supplier="p09_c1" contract="p09_c1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p09_p8" name="boisson" visibility="protected" type="p09_c1" association="p09_as6" aggregation="shared"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p09_c4" name="Lait">
+        <generalization xmi:type="uml:Generalization" xmi:id="p09_g19" general="p09_c3"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p09_o20" name="prix" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p09_pa21" direction="return" type="p09_t13"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p09_c5" name="Sucre">
+        <generalization xmi:type="uml:Generalization" xmi:id="p09_g22" general="p09_c3"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p09_o23" name="prix" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p09_pa24" direction="return" type="p09_t13"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p09_as6" name="enveloppe" memberEnd="p09_p8 p09_p7">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p09_p7" type="p09_c3" association="p09_as6">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p09_t13" name="double"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

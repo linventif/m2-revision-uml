@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="State">
+    <packagedElement xmi:type="uml:Package" xmi:id="p16_pk12" name="16 - State">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p16_cm13"><body>But : un objet change de comportement quand son état interne change (comme s'il changeait de classe).</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p16_c1" name="Commande">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p16_p9" name="etat" visibility="private" type="p16_c2" association="p16_as7" aggregation="shared"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p16_o15" name="suivant" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p16_o16" name="annuler" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p16_c2" name="EtatCommande" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p16_o17" name="suivant" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p16_pa18" direction="return" type="p16_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p16_o19" name="annuler" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p16_pa20" direction="return" type="p16_c2"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p16_c3" name="Creee">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p16_r21" client="p16_c3" supplier="p16_c2" contract="p16_c2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p16_c4" name="Payee">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p16_r22" client="p16_c4" supplier="p16_c2" contract="p16_c2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p16_c5" name="Expediee">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p16_r23" client="p16_c5" supplier="p16_c2" contract="p16_c2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p16_c6" name="Annulee">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p16_r24" client="p16_c6" supplier="p16_c2" contract="p16_c2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p16_as7" name="état courant" memberEnd="p16_p9 p16_p8">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p16_p8" type="p16_c1" association="p16_as7">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p16_d10" name="suivant()" client="p16_c3" supplier="p16_c4"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p16_d11" name="suivant()" client="p16_c4" supplier="p16_c5"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

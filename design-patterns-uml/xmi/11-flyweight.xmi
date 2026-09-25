@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Flyweight">
+    <packagedElement xmi:type="uml:Package" xmi:id="p11_pk18" name="11 - Flyweight">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p11_cm19"><body>But : partager les parties communes (état intrinsèque) entre de nombreux objets pour économiser la mémoire.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p11_c1" name="Foret">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p11_p7" name="arbre" visibility="private" type="p11_c2" association="p11_as5" aggregation="composite">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p11_lv21" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p11_uv22" value="*"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p11_c2" name="Arbre">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p11_p23" name="x" visibility="private" type="p11_t24"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p11_p25" name="y" visibility="private" type="p11_t24"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p11_p12" name="type" visibility="private" type="p11_c3" association="p11_as10" aggregation="none">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p11_lv27" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p11_uv28" value="1"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p11_o29" name="dessiner" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p11_c3" name="TypeArbre">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p11_p30" name="nom" visibility="private" type="p11_t31"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p11_p32" name="couleur" visibility="private" type="p11_t33"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p11_p34" name="texture" visibility="private" type="p11_t35"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p11_o36" name="dessiner" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p11_pa37" name="x" direction="in" type="p11_t24"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p11_pa38" name="y" direction="in" type="p11_t24"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p11_c4" name="TypeArbreFactory">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p11_p39" name="cache" visibility="private" type="p11_t40"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p11_p17" name="typeArbre" visibility="private" type="p11_c3" association="p11_as15" aggregation="shared"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p11_o42" name="getType" visibility="public" isStatic="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p11_pa43" name="nom" direction="in" type="p11_t31"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p11_pa44" direction="return" type="p11_c3"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p11_as5" name="1 million" memberEnd="p11_p7 p11_p6">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p11_p6" type="p11_c1" association="p11_as5">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p11_lv8" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p11_uv9" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p11_as10" name="partagé" memberEnd="p11_p12 p11_p11">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p11_p11" type="p11_c2" association="p11_as10">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p11_lv13" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p11_uv14" value="*"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p11_as15" name="met en cache" memberEnd="p11_p17 p11_p16">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p11_p16" type="p11_c4" association="p11_as15">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p11_t24" name="int"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p11_t31" name="String"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p11_t33" name="Color"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p11_t35" name="Image"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p11_t40" name="Map"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

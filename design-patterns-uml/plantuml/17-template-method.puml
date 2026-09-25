@@ -1,0 +1,43 @@
+@startuml 17-template-method
+!pragma layout smetana
+title Template Method — Comportement
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+abstract class Boisson <<abstract>> {
+  +preparer()
+  -bouillir()
+  -verser()
+  {abstract} #infuser()
+  {abstract} #ajouterSupplements()
+}
+class The {
+  #infuser()
+  #ajouterSupplements()
+}
+class Cafe {
+  #infuser()
+  #ajouterSupplements()
+}
+
+Boisson <|-- The
+Boisson <|-- Cafe
+
+note bottom of Boisson
+preparer() est final et appelle dans l'ordre :
+bouillir, infuser, verser, ajouterSupplements
+end note
+
+legend bottom left
+**But :** définir le squelette d'un algorithme dans une classe mère, les sous-classes
+redéfinissent certaines étapes.
+ 
+**Lecture :** dans la classe mère, les méthodes en //italique// sont **abstraites** : ce sont
+les « trous » que les sous-classes remplissent. Les méthodes privées (""bouillir"", ""verser"")
+sont communes à tous. Les sous-classes **ne redéfinissent jamais** ""preparer()"" : c'est la
+mère qui garde le contrôle de l'ordre.
+endlegend
+@enduml

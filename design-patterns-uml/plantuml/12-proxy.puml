@@ -1,0 +1,37 @@
+@startuml 12-proxy
+!pragma layout smetana
+title Proxy — Structure
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Client
+interface Image <<interface>> {
+  +afficher()
+}
+class ImageReelle {
+  -fichier : String
+  +ImageReelle(fichier : String)
+  +afficher()
+}
+class ImageProxy {
+  -fichier : String
+  -reelle : ImageReelle
+  +afficher()
+}
+
+Client --> Image
+Image <|.. ImageReelle
+Image <|.. ImageProxy
+ImageProxy --> ImageReelle : crée au 1er afficher()
+
+legend bottom left
+**But :** un substitut qui contrôle l'accès à un autre objet.
+ 
+**Lecture :** le proxy et l'objet réel implémentent **la même interface**, donc le client ne
+voit pas la différence. Le proxy garde une référence vers l'objet réel et décide **quand** (et
+**si**) il l'appelle.
+endlegend
+@enduml

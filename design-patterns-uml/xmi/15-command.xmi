@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Command">
+    <packagedElement xmi:type="uml:Package" xmi:id="p15_pk15" name="15 - Command">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p15_cm16"><body>But : transformer une requête en objet (qu'on peut stocker, annuler, mettre en file).</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p15_c1" name="Telecommande">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p15_p8" name="historique" visibility="private" type="p15_c2" association="p15_as6" aggregation="shared">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p15_lv18" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p15_uv19" value="*"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p15_o20" name="appuyer" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p15_pa21" name="c" direction="in" type="p15_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p15_o22" name="undo" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p15_c2" name="Commande" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p15_o23" name="executer" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p15_o24" name="annuler" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p15_c3" name="AllumerLampe">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p15_r25" client="p15_c3" supplier="p15_c2" contract="p15_c2"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p15_p11" name="lampe" visibility="private" type="p15_c5" association="p15_as9" aggregation="none"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p15_o27" name="executer" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p15_o28" name="annuler" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p15_c4" name="EteindreLampe">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p15_r29" client="p15_c4" supplier="p15_c2" contract="p15_c2"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p15_p14" name="lampe" visibility="private" type="p15_c5" association="p15_as12" aggregation="none"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p15_o31" name="executer" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p15_o32" name="annuler" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p15_c5" name="Lampe">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p15_o33" name="on" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p15_o34" name="off" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p15_as6" name="stocke" memberEnd="p15_p8 p15_p7">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p15_p7" type="p15_c1" association="p15_as6">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p15_as9" name="agit sur" memberEnd="p15_p11 p15_p10">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p15_p10" type="p15_c3" association="p15_as9">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p15_as12" name="agit sur" memberEnd="p15_p14 p15_p13">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p15_p13" type="p15_c4" association="p15_as12">
+        </ownedEnd>
+      </packagedElement>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

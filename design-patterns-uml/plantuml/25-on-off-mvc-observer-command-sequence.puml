@@ -1,0 +1,32 @@
+@startuml 25-on-off-mvc-observer-command-sequence
+!pragma layout smetana
+title ON/OFF : MVC + Observer + Command — déroulement
+skinparam defaultFontName Arial
+skinparam shadowing false
+autonumber
+
+actor "Utilisateur" as U
+participant "btnON : Button" as B
+participant "CtrlON" as C
+participant "CommandAllumer" as K
+participant "Model" as M
+participant "NoyauFonctionnel" as NF
+participant "LabelView" as LV
+participant "ONEnabling" as EN
+U -> B : clic
+B -> C : onClick()
+C -> K : execute()
+K -> M : allumer()
+M -> NF : allumer()
+M -> M : allume = true, textToDisplay = "Allumé"
+M -> M : fireNotify()
+M -> LV : notify(this)
+LV -> M : getTextToDisplay()
+M --> LV : "Allumé"
+note right of LV : lblStatus.setText("Allumé")
+M -> EN : notify(this)
+EN -> M : isONEnabled()
+M --> EN : false
+EN -> B : setEnabled(false)
+note over M, EN : OFFEnabling fait pareil : btnOFF.setEnabled(true)
+@enduml

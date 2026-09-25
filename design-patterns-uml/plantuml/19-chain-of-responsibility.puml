@@ -1,0 +1,34 @@
+@startuml 19-chain-of-responsibility
+!pragma layout smetana
+title Chain of Responsibility — Comportement
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Client
+abstract class Handler <<abstract>> {
+  #suivant : Handler
+  +setSuivant(h : Handler)
+  +traiter(r : Requete)
+}
+class SupportN1
+class SupportN2
+class SupportN3
+
+Client --> Handler : envoie au 1er
+Handler o-- Handler : suivant
+Handler <|-- SupportN1
+Handler <|-- SupportN2
+Handler <|-- SupportN3
+
+legend bottom left
+**But :** faire passer une requête le long d'une chaîne de handlers jusqu'à ce que l'un la
+traite.
+ 
+**Lecture :** le losange qui **boucle sur ""Handler"" lui-même** est la chaîne : chaque handler
+a un attribut ""suivant"" qui est aussi un ""Handler"". Chacun décide soit de traiter la
+requête, soit de la passer au suivant.
+endlegend
+@enduml

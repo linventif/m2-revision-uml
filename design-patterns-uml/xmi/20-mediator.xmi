@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Mediator">
+    <packagedElement xmi:type="uml:Package" xmi:id="p20_pk12" name="20 - Mediator">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p20_cm13"><body>But : centraliser la communication entre objets pour qu'ils ne se connaissent pas directement.</body></ownedComment>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p20_c1" name="ChatRoom" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p20_o14" name="envoyer" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p20_pa15" name="msg" direction="in" type="p20_t16"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p20_pa17" name="de" direction="in" type="p20_c3"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p20_c2" name="ChatRoomImpl">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p20_r18" client="p20_c2" supplier="p20_c1" contract="p20_c1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p20_p6" name="membres" visibility="private" type="p20_c3" association="p20_as4" aggregation="shared">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p20_lv20" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p20_uv21" value="*"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p20_o22" name="envoyer" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p20_pa23" name="msg" direction="in" type="p20_t16"/>
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p20_pa24" name="de" direction="in" type="p20_c3"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p20_c3" name="Utilisateur">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p20_p25" name="nom" visibility="private" type="p20_t16"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p20_p11" name="chat" visibility="private" type="p20_c1" association="p20_as9" aggregation="none"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p20_o27" name="ecrire" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p20_pa28" name="msg" direction="in" type="p20_t16"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p20_o29" name="recevoir" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p20_pa30" name="msg" direction="in" type="p20_t16"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p20_as4" name="redistribue" memberEnd="p20_p6 p20_p5">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p20_p5" type="p20_c2" association="p20_as4">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p20_lv7" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p20_uv8" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p20_as9" name="passe par" memberEnd="p20_p11 p20_p10">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p20_p10" type="p20_c3" association="p20_as9">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p20_t16" name="String"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

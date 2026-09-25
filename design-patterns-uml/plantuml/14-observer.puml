@@ -1,0 +1,35 @@
+@startuml 14-observer
+!pragma layout smetana
+title Observer — Comportement
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Station {
+  -abonnes : List<Afficheur>
+  -temperature : double
+  +abonner(a : Afficheur)
+  +desabonner(a : Afficheur)
+  +setTemp(t : double)
+}
+interface Afficheur <<interface>> {
+  +maj(t : double)
+}
+class EcranTelephone
+class PanneauMairie
+
+Station "1" o-- "*" Afficheur : notifie
+Afficheur <|.. EcranTelephone
+Afficheur <|.. PanneauMairie
+
+legend bottom left
+**But :** quand un objet change, ses abonnés sont notifiés automatiquement (relation 1 → N).
+ 
+**Lecture :** une ""Station"" (le **sujet**) garde une **liste** d'""Afficheur"" (les
+**observateurs**, cardinalité ""*""). Quand ""setTemp()"" est appelé, elle parcourt la liste et
+appelle ""maj(t)"" sur chacun. Elle ne connaît que l'interface, donc on peut ajouter de
+nouveaux types d'afficheurs sans la modifier.
+endlegend
+@enduml

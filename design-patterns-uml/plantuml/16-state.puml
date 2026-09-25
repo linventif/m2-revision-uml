@@ -1,0 +1,40 @@
+@startuml 16-state
+!pragma layout smetana
+title State — Comportement
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Commande {
+  -etat : EtatCommande
+  +suivant()
+  +annuler()
+}
+interface EtatCommande <<interface>> {
+  +suivant() : EtatCommande
+  +annuler() : EtatCommande
+}
+class Creee
+class Payee
+class Expediee
+class Annulee
+
+Commande o-- EtatCommande : état courant
+EtatCommande <|.. Creee
+EtatCommande <|.. Payee
+EtatCommande <|.. Expediee
+EtatCommande <|.. Annulee
+Creee ..> Payee : suivant()
+Payee ..> Expediee : suivant()
+
+legend bottom left
+**But :** un objet change de comportement quand son état interne change (comme s'il changeait
+de classe).
+ 
+**Lecture :** c'est la même forme que Strategy (◇ vers une interface), avec en plus les flèches
+**entre états** (""Creee ..> Payee""). C'est l'état lui-même qui choisit son successeur.
+""Commande.suivant()"" fait simplement ""etat = etat.suivant()"".
+endlegend
+@enduml

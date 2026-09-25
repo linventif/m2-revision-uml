@@ -1,0 +1,12 @@
+@startuml 16-state-transitions
+!pragma layout smetana
+title State — transitions entre états
+
+[*] --> Creee
+Creee --> Payee : suivant()
+Payee --> Expediee : suivant()
+Creee --> Annulee : annuler()
+Payee --> Annulee : annuler()
+Expediee --> [*]
+Annulee --> [*]
+@enduml

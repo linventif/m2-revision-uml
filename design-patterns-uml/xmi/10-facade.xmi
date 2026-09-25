@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Facade">
+    <packagedElement xmi:type="uml:Package" xmi:id="p10_pk18" name="10 - Facade">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p10_cm19"><body>But : fournir une interface simple à un sous-système complexe.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p10_c1" name="Client">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p10_p8" name="homeCinema" visibility="private" type="p10_c2" association="p10_as6" aggregation="none"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p10_c2" name="HomeCinema">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p10_p11" name="ampli" visibility="private" type="p10_c3" association="p10_as9" aggregation="none"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p10_p14" name="projecteur" visibility="private" type="p10_c4" association="p10_as12" aggregation="none"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p10_p17" name="lecteur" visibility="private" type="p10_c5" association="p10_as15" aggregation="none"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p10_o24" name="regarderFilm" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p10_o25" name="arreterFilm" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p10_c3" name="Ampli">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p10_o26" name="on" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p10_o27" name="setVolume" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p10_pa28" name="v" direction="in" type="p10_t29"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p10_c4" name="Projecteur">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p10_o30" name="on" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p10_o31" name="modeCinema" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p10_c5" name="Lecteur">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p10_o32" name="on" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p10_o33" name="play" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p10_pa34" name="film" direction="in" type="p10_t35"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p10_as6" name="1 seul appel" memberEnd="p10_p8 p10_p7">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p10_p7" type="p10_c1" association="p10_as6">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p10_as9" memberEnd="p10_p11 p10_p10">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p10_p10" type="p10_c2" association="p10_as9">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p10_as12" memberEnd="p10_p14 p10_p13">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p10_p13" type="p10_c2" association="p10_as12">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p10_as15" memberEnd="p10_p17 p10_p16">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p10_p16" type="p10_c2" association="p10_as15">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p10_t29" name="int"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p10_t35" name="String"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

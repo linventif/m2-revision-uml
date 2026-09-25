@@ -1,0 +1,38 @@
+@startuml 04-builder
+!pragma layout smetana
+title Builder — Création
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Pizza {
+  -taille : String
+  -fromage : boolean
+  -jambon : boolean
+  -Pizza(b : Builder)
+}
+class Builder {
+  -taille : String
+  -fromage : boolean
+  -jambon : boolean
+  +Builder(taille : String)
+  +fromage() : Builder
+  +jambon() : Builder
+  +build() : Pizza
+}
+class Client
+
+Client ..> Builder : 1. configure
+Builder ..> Pizza : 2. build() crée
+
+legend bottom left
+**But :** construire un objet complexe étape par étape.
+ 
+**Lecture :** le ""Builder"" a **les mêmes attributs** que ""Pizza"", qu'il remplit petit à
+petit. Chaque méthode **retourne le Builder** (""this""), ce qui permet de chaîner les appels.
+Le constructeur de ""Pizza"" est privé : on ne peut obtenir une pizza qu'en passant par
+""build()"".
+endlegend
+@enduml

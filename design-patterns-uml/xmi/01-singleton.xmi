@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Singleton">
+    <packagedElement xmi:type="uml:Package" xmi:id="p01_pk4" name="01 - Singleton">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p01_cm5"><body>But : une seule instance, accessible globalement.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p01_c1" name="Config">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p01_p6" name="instance" visibility="private" type="p01_c1" isStatic="true"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p01_o7" name="Config" visibility="private">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p01_o8" name="getInstance" visibility="public" isStatic="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p01_pa9" direction="return" type="p01_c1"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p01_c2" name="Client">
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p01_d3" name="Config.getInstance()" client="p01_c2" supplier="p01_c1"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

@@ -1,0 +1,41 @@
+@startuml 11-flyweight
+!pragma layout smetana
+title Flyweight — Structure
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Foret
+class Arbre {
+  -x : int
+  -y : int
+  -type : TypeArbre
+  +dessiner()
+}
+class TypeArbre {
+  -nom : String
+  -couleur : Color
+  -texture : Image
+  +dessiner(x : int, y : int)
+}
+class TypeArbreFactory {
+  -cache : Map
+  {static} +getType(nom : String) : TypeArbre
+}
+
+Foret "1" *-- "*" Arbre : 1 million
+Arbre "*" --> "1" TypeArbre : partagé
+TypeArbreFactory o-- TypeArbre : met en cache
+
+legend bottom left
+**But :** partager les parties communes (état **intrinsèque**) entre de nombreux objets pour
+économiser la mémoire.
+ 
+**Lecture :** regarde les **cardinalités** : un million d'""Arbre"" (""*"") pointent vers
+**un seul** ""TypeArbre"" (""1""). Chaque ""Arbre"" est léger (sa position, l'état
+**extrinsèque**). La partie lourde, texture et couleur (l'état **intrinsèque**), n'existe qu'en
+quelques exemplaires, fournis par la factory qui les met en cache.
+endlegend
+@enduml

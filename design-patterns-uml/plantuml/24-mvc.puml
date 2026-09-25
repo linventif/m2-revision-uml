@@ -1,0 +1,89 @@
+@startuml 24-mvc
+!pragma layout smetana
+title MVC — Architecture
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Application
+class Model #DDEBFF {
+  -value : int = 7
+  +setValue(v : int)
+  +getValue() : int
+  +addModelListener(l : ModelListener)
+  +removeModelListener(l : ModelListener)
+  -fireNotify()
+}
+interface ModelListener <<interface>> #DDEBFF {
+  +notify(m : Model)
+}
+class ViewLabelNum #DFF5E1 {
+  +notify(m : Model)
+}
+class ViewLabelText #DFF5E1 {
+  +notify(m : Model)
+}
+class Controller10 #FFE4CC {
+  +actionPerformed(e : ActionEvent)
+}
+class Controller20 #FFE4CC {
+  +actionPerformed(e : ActionEvent)
+}
+class Controller30 #FFE4CC {
+  +actionPerformed(e : ActionEvent)
+}
+class Label #EEEEEE {
+  +setText(t : String)
+}
+class Button #EEEEEE {
+  +addActionListener(l : ActionListener)
+}
+interface ActionListener <<interface>> #EEEEEE {
+  +actionPerformed(e : ActionEvent)
+}
+
+Application *-- "-lblNum\n-lblText" Label
+Application *-- "-btn10\n-btn20\n-btn30" Button
+Button "1" --> "*" ActionListener
+ActionListener <|.. Controller10
+ActionListener <|.. Controller20
+ActionListener <|.. Controller30
+Controller10 --> "-model" Model
+Controller20 --> "-model" Model
+Controller30 --> "-model" Model
+Model "1" --> "-modelListeners *" ModelListener
+ModelListener <|.. ViewLabelNum
+ModelListener <|.. ViewLabelText
+ViewLabelNum --> "-label" Label
+ViewLabelText --> "-label" Label
+
+note bottom of Controller10
+actionPerformed : model.setValue(10)
+end note
+
+note bottom of ViewLabelNum
+notify : label.setText(Integer.toString(m.getValue()))
+end note
+
+note bottom of ViewLabelText
+notify : switch sur m.getValue() : dix, vingt, trente ou ?
+end note
+
+legend bottom left
+**But :** séparer une application en 3 rôles : le **Modèle** (données + règles métier), la
+**Vue** (affichage) et le **Contrôleur** (reçoit les actions de l'utilisateur et modifie le
+modèle).
+ 
+**Couleurs :** <back:#DDEBFF> bleu </back> = Modèle, <back:#DFF5E1> vert </back> = Vue, <back:#FFE4CC> orange </back> = Contrôleur, <back:#EEEEEE> gris </back> = Composants AWT (fournis par Java)
+ 
+**Lecture :** il y a **deux Observer** dans ce diagramme. Côté AWT, ""Button → ActionListener""
+: le bouton prévient ses contrôleurs quand on clique. Côté métier, ""Model → ModelListener"" :
+le modèle prévient ses vues quand la valeur change. Entre les deux, le **contrôleur** fait le
+lien : ""actionPerformed()"" appelle ""model.setValue(10)"". ""Model"" ne connaît que
+l'interface ""ModelListener"" : ni les vues, ni les labels, ni les boutons. On peut donc
+ajouter une vue ou un contrôleur **sans modifier ""Model""**. ""Application"" crée et possède
+(◆) les composants graphiques, puis branche tout.
+endlegend
+@enduml

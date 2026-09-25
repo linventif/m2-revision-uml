@@ -1,0 +1,26 @@
+@startuml 01-singleton
+!pragma layout smetana
+title Singleton — Création
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Config {
+  {static} -instance : Config
+  -Config()
+  {static} +getInstance() : Config
+}
+class Client
+
+Client ..> Config : Config.getInstance()
+
+legend bottom left
+**But :** une seule instance, accessible globalement.
+ 
+**Lecture :** le constructeur est **privé** (""-""), donc personne ne peut faire
+""new Config()"". La seule instance est rangée dans l'attribut **static** (souligné) et on la
+récupère par ""getInstance()"".
+endlegend
+@enduml

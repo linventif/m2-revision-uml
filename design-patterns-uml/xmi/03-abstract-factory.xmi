@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Abstract Factory">
+    <packagedElement xmi:type="uml:Package" xmi:id="p03_pk18" name="03 - Abstract Factory">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p03_cm19"><body>But : créer des familles d'objets liés sans préciser leurs classes concrètes.</body></ownedComment>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p03_c1" name="UIFactory" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p03_o20" name="creerBouton" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p03_pa21" direction="return" type="p03_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p03_o22" name="creerMenu" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p03_pa23" direction="return" type="p03_c3"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p03_c2" name="Bouton" isAbstract="true">
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p03_c3" name="Menu" isAbstract="true">
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p03_c4" name="Application">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p03_p13" name="factory" visibility="private" type="p03_c1" association="p03_as11" aggregation="none"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p03_c5" name="MacFactory">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p03_r25" client="p03_c5" supplier="p03_c1" contract="p03_c1"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p03_c6" name="WinFactory">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p03_r26" client="p03_c6" supplier="p03_c1" contract="p03_c1"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p03_c7" name="MacBouton">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p03_r27" client="p03_c7" supplier="p03_c2" contract="p03_c2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p03_c8" name="WinBouton">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p03_r28" client="p03_c8" supplier="p03_c2" contract="p03_c2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p03_c9" name="MacMenu">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p03_r29" client="p03_c9" supplier="p03_c3" contract="p03_c3"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p03_c10" name="WinMenu">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p03_r30" client="p03_c10" supplier="p03_c3" contract="p03_c3"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p03_as11" memberEnd="p03_p13 p03_p12">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p03_p12" type="p03_c4" association="p03_as11">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p03_d14" name="crée" client="p03_c5" supplier="p03_c7"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p03_d15" name="crée" client="p03_c5" supplier="p03_c9"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p03_d16" name="crée" client="p03_c6" supplier="p03_c8"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p03_d17" name="crée" client="p03_c6" supplier="p03_c10"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Proxy">
+    <packagedElement xmi:type="uml:Package" xmi:id="p12_pk11" name="12 - Proxy">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p12_cm12"><body>But : un substitut qui contrôle l'accès à un autre objet.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p12_c1" name="Client">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p12_p7" name="image" visibility="private" type="p12_c2" association="p12_as5" aggregation="none"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p12_c2" name="Image" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p12_o14" name="afficher" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p12_c3" name="ImageReelle">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p12_r15" client="p12_c3" supplier="p12_c2" contract="p12_c2"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p12_p16" name="fichier" visibility="private" type="p12_t17"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p12_o18" name="ImageReelle" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p12_pa19" name="fichier" direction="in" type="p12_t17"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p12_o20" name="afficher" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p12_c4" name="ImageProxy">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p12_r21" client="p12_c4" supplier="p12_c2" contract="p12_c2"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p12_p22" name="fichier" visibility="private" type="p12_t17"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p12_p10" name="reelle" visibility="private" type="p12_c3" association="p12_as8" aggregation="none"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p12_o24" name="afficher" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p12_as5" memberEnd="p12_p7 p12_p6">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p12_p6" type="p12_c1" association="p12_as5">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p12_as8" name="crée au 1er afficher()" memberEnd="p12_p10 p12_p9">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p12_p9" type="p12_c4" association="p12_as8">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p12_t17" name="String"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

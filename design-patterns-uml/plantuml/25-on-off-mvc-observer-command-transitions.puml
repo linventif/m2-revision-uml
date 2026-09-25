@@ -1,0 +1,10 @@
+@startuml 25-on-off-mvc-observer-command-transitions
+!pragma layout smetana
+title ON/OFF : MVC + Observer + Command — transitions entre états
+
+state "Éteint" as Eteint
+state "Allumé" as Allume
+[*] --> Eteint : init / nf.eteindre(), display("Éteint")
+Eteint --> Allume : CON / nf.allumer(), display("Allumé")
+Allume --> Eteint : COFF / nf.eteindre(), display("Éteint")
+@enduml

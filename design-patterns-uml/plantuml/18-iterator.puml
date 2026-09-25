@@ -1,0 +1,42 @@
+@startuml 18-iterator
+!pragma layout smetana
+title Iterator — Comportement
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+interface Iterable<T> <<interface>> {
+  +iterator() : Iterator<T>
+}
+interface Iterator<T> <<interface>> {
+  +hasNext() : boolean
+  +next() : T
+}
+class Playlist {
+  -chansons : List<Chanson>
+  +iterator() : Iterator<Chanson>
+}
+class PlaylistIterator {
+  -index : int
+  +hasNext() : boolean
+  +next() : Chanson
+}
+class Client
+
+Iterable <|.. Playlist
+Iterator <|.. PlaylistIterator
+Playlist ..> PlaylistIterator : crée
+PlaylistIterator --> Playlist : parcourt
+Client ..> Iterator : hasNext() / next()
+
+legend bottom left
+**But :** parcourir une collection sans exposer sa structure interne.
+ 
+**Lecture :** la collection (""Playlist"") **fabrique** son itérateur, et c'est l'itérateur qui
+retient **où on en est** (""index""). Le client ne voit que ""hasNext()"" / ""next()"" : il
+ignore si les chansons sont dans une liste, un tableau ou un arbre.
+""for (Chanson c : playlist)"" fait exactement ça en coulisse.
+endlegend
+@enduml

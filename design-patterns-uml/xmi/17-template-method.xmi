@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Template Method">
+    <packagedElement xmi:type="uml:Package" xmi:id="p17_pk4" name="17 - Template Method">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p17_cm5"><body>But : définir le squelette d'un algorithme dans une classe mère, les sous-classes redéfinissent certaines étapes.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p17_c1" name="Boisson" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p17_o6" name="preparer" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p17_o7" name="bouillir" visibility="private">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p17_o8" name="verser" visibility="private">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p17_o9" name="infuser" visibility="protected" isAbstract="true">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p17_o10" name="ajouterSupplements" visibility="protected" isAbstract="true">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p17_c2" name="The">
+        <generalization xmi:type="uml:Generalization" xmi:id="p17_g11" general="p17_c1"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p17_o12" name="infuser" visibility="protected">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p17_o13" name="ajouterSupplements" visibility="protected">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p17_c3" name="Cafe">
+        <generalization xmi:type="uml:Generalization" xmi:id="p17_g14" general="p17_c1"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p17_o15" name="infuser" visibility="protected">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p17_o16" name="ajouterSupplements" visibility="protected">
+        </ownedOperation>
+      </packagedElement>
+      <ownedComment xmi:type="uml:Comment" xmi:id="p17_cm17" annotatedElement="p17_c1"><body>preparer() est final et appelle dans l'ordre :
+bouillir, infuser, verser, ajouterSupplements</body></ownedComment>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

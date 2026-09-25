@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Adapter">
+    <packagedElement xmi:type="uml:Package" xmi:id="p06_pk11" name="06 - Adapter">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p06_cm12"><body>But : rendre compatible une interface existante avec celle attendue.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p06_c1" name="Appareil">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p06_p7" name="attend" visibility="private" type="p06_c2" association="p06_as5" aggregation="none"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p06_c2" name="PriseFR" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p06_o14" name="brancher" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p06_c3" name="PriseAdapter">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p06_r15" client="p06_c3" supplier="p06_c2" contract="p06_c2"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p06_p10" name="us" visibility="private" type="p06_c4" association="p06_as8" aggregation="none"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p06_o17" name="brancher" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p06_c4" name="PriseUS">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p06_o18" name="plugIn" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p06_as5" name="attend" memberEnd="p06_p7 p06_p6">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p06_p6" type="p06_c1" association="p06_as5">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p06_as8" name="wrappe" memberEnd="p06_p10 p06_p9">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p06_p9" type="p06_c3" association="p06_as8">
+        </ownedEnd>
+      </packagedElement>
+      <ownedComment xmi:type="uml:Comment" xmi:id="p06_cm19" annotatedElement="p06_c4"><body>classe existante
+qu'on ne peut pas modifier</body></ownedComment>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

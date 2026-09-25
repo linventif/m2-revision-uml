@@ -1,0 +1,46 @@
+@startuml 22-visitor
+!pragma layout smetana
+title Visitor — Comportement
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+interface Forme <<interface>> {
+  +accept(v : Visiteur)
+}
+class Cercle {
+  +accept(v : Visiteur)
+}
+class Carre {
+  +accept(v : Visiteur)
+}
+interface Visiteur <<interface>> {
+  +visit(c : Cercle)
+  +visit(c : Carre)
+}
+class ExportXML {
+  +visit(c : Cercle)
+  +visit(c : Carre)
+}
+class CalculAire {
+  +visit(c : Cercle)
+  +visit(c : Carre)
+}
+
+Forme <|.. Cercle
+Forme <|.. Carre
+Visiteur <|.. ExportXML
+Visiteur <|.. CalculAire
+Forme ..> Visiteur : accept(v)
+
+legend bottom left
+**But :** ajouter une opération à une hiérarchie de classes **sans modifier ces classes**.
+ 
+**Lecture :** il y a deux hiérarchies. Les **éléments** (""Forme"") ne changent jamais. Les
+**opérations** (""Visiteur"") : 1 visiteur = 1 nouvelle opération. ""Visiteur"" a
+**une méthode ""visit"" par type d'élément**. ""Cercle.accept(v)"" fait ""v.visit(this)"", et
+comme ""this"" est un ""Cercle"", Java appelle la bonne surcharge : c'est le double dispatch.
+endlegend
+@enduml

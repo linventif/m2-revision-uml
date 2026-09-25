@@ -1,0 +1,42 @@
+@startuml 23-interpreter
+!pragma layout smetana
+title Interpreter — Comportement
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+interface Expression <<interface>> {
+  +interpreter() : int
+}
+class Nombre {
+  -valeur : int
+  +interpreter() : int
+}
+class Addition {
+  -gauche : Expression
+  -droite : Expression
+  +interpreter() : int
+}
+class Multiplication {
+  -gauche : Expression
+  -droite : Expression
+  +interpreter() : int
+}
+
+Expression <|.. Nombre
+Expression <|.. Addition
+Expression <|.. Multiplication
+Addition "1" o-- "2" Expression
+Multiplication "1" o-- "2" Expression
+
+legend bottom left
+**But :** définir une grammaire et un interpréteur pour un petit langage.
+ 
+**Lecture :** c'est un **Composite** appliqué à une grammaire. ""Nombre"" est la feuille,
+""Addition"" et ""Multiplication"" contiennent 2 sous-expressions. ""2 + 3 * 4"" devient
+l'arbre ""Addition(Nombre 2, Multiplication(Nombre 3, Nombre 4))"", et ""interpreter()""
+descend récursivement dans cet arbre.
+endlegend
+@enduml

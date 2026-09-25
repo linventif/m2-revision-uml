@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Strategy">
+    <packagedElement xmi:type="uml:Package" xmi:id="p13_pk9" name="13 - Strategy">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p13_cm10"><body>But : encapsuler des algorithmes interchangeables.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p13_c1" name="Panier">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p13_p8" name="paiement" visibility="private" type="p13_c2" association="p13_as6" aggregation="shared"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p13_o12" name="setPaiement" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p13_pa13" name="p" direction="in" type="p13_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p13_o14" name="checkout" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p13_c2" name="Paiement" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p13_o15" name="payer" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p13_pa16" name="montant" direction="in" type="p13_t17"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p13_c3" name="PaiementCB">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p13_r18" client="p13_c3" supplier="p13_c2" contract="p13_c2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p13_c4" name="PaiementPaypal">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p13_r19" client="p13_c4" supplier="p13_c2" contract="p13_c2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p13_c5" name="PaiementCrypto">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p13_r20" client="p13_c5" supplier="p13_c2" contract="p13_c2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p13_as6" name="délègue" memberEnd="p13_p8 p13_p7">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p13_p7" type="p13_c1" association="p13_as6">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p13_t17" name="double"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

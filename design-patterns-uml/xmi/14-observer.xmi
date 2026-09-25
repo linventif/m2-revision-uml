@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Observer">
+    <packagedElement xmi:type="uml:Package" xmi:id="p14_pk10" name="14 - Observer">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p14_cm11"><body>But : quand un objet change, ses abonnés sont notifiés automatiquement (relation 1 → N).</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p14_c1" name="Station">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p14_p7" name="abonnes" visibility="private" type="p14_c2" association="p14_as5" aggregation="shared">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p14_lv13" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p14_uv14" value="*"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p14_p15" name="temperature" visibility="private" type="p14_t16"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p14_o17" name="abonner" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p14_pa18" name="a" direction="in" type="p14_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p14_o19" name="desabonner" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p14_pa20" name="a" direction="in" type="p14_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p14_o21" name="setTemp" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p14_pa22" name="t" direction="in" type="p14_t16"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p14_c2" name="Afficheur" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p14_o23" name="maj" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p14_pa24" name="t" direction="in" type="p14_t16"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p14_c3" name="EcranTelephone">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p14_r25" client="p14_c3" supplier="p14_c2" contract="p14_c2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p14_c4" name="PanneauMairie">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p14_r26" client="p14_c4" supplier="p14_c2" contract="p14_c2"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p14_as5" name="notifie" memberEnd="p14_p7 p14_p6">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p14_p6" type="p14_c1" association="p14_as5">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p14_lv8" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p14_uv9" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p14_t16" name="double"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

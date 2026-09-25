@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="ON/OFF : MVC + Observer + Command">
+    <packagedElement xmi:type="uml:Package" xmi:id="p25_pk62" name="25 - ON/OFF : MVC + Observer + Command">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p25_cm63"><body>But : traduire l'énoncé en MVC : le Model enveloppe le noyau fonctionnel, 3 vues se mettent à jour toutes seules (Observer), et chaque bouton déclenche une Command.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p25_c1" name="Application">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p18" name="lblStatus" visibility="private" type="p25_c13" association="p25_as16" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p21" name="btnON" visibility="private" type="p25_c14" association="p25_as19" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p24" name="btnOFF" visibility="private" type="p25_c14" association="p25_as22" aggregation="composite"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p27" name="model" visibility="private" type="p25_c3" association="p25_as25" aggregation="none"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="p25_pk126" name="Noyau fonctionnel">
+        <packagedElement xmi:type="uml:Class" xmi:id="p25_c2" name="NoyauFonctionnel">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o68" name="allumer" visibility="public">
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o69" name="eteindre" visibility="public">
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="p25_pk127" name="Modèle">
+        <packagedElement xmi:type="uml:Class" xmi:id="p25_c3" name="Model">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p70" name="allume" visibility="private" type="p25_t71"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p72" name="textToDisplay" visibility="private" type="p25_t73"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p30" name="nf" visibility="private" type="p25_c2" association="p25_as28" aggregation="none"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p33" name="modelListeners" visibility="private" type="p25_c4" association="p25_as31" aggregation="none">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p25_lv76" value="0"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p25_uv77" value="*"/>
+          </ownedAttribute>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o78" name="allumer" visibility="public">
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o79" name="eteindre" visibility="public">
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o80" name="getTextToDisplay" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="p25_pa81" direction="return" type="p25_t73"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o82" name="isONEnabled" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="p25_pa83" direction="return" type="p25_t71"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o84" name="isOFFEnabled" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="p25_pa85" direction="return" type="p25_t71"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o86" name="addModelListener" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="p25_pa87" name="l" direction="in" type="p25_c4"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o88" name="fireNotify" visibility="private">
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="p25_c4" name="ModelListener" isAbstract="true">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o89" name="notify" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="p25_pa90" name="m" direction="in" type="p25_c3"/>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="p25_pk128" name="Vue">
+        <packagedElement xmi:type="uml:Class" xmi:id="p25_c5" name="LabelView">
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p25_r91" client="p25_c5" supplier="p25_c4" contract="p25_c4"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p38" name="label" visibility="private" type="p25_c13" association="p25_as36" aggregation="none"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o93" name="notify" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="p25_pa94" name="m" direction="in" type="p25_c3"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="p25_c6" name="ONEnabling">
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p25_r95" client="p25_c6" supplier="p25_c4" contract="p25_c4"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p41" name="btn" visibility="private" type="p25_c14" association="p25_as39" aggregation="none"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o97" name="notify" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="p25_pa98" name="m" direction="in" type="p25_c3"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="p25_c7" name="OFFEnabling">
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p25_r99" client="p25_c7" supplier="p25_c4" contract="p25_c4"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p44" name="btn" visibility="private" type="p25_c14" association="p25_as42" aggregation="none"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o101" name="notify" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="p25_pa102" name="m" direction="in" type="p25_c3"/>
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="p25_pk129" name="Contrôleur">
+        <packagedElement xmi:type="uml:Class" xmi:id="p25_c8" name="CtrlON">
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p25_r103" client="p25_c8" supplier="p25_c15" contract="p25_c15"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p52" name="command" visibility="private" type="p25_c10" association="p25_as50" aggregation="none"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o105" name="onClick" visibility="public">
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="p25_c9" name="CtrlOFF">
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p25_r106" client="p25_c9" supplier="p25_c15" contract="p25_c15"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p55" name="command" visibility="private" type="p25_c10" association="p25_as53" aggregation="none"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o108" name="onClick" visibility="public">
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="p25_pk130" name="Commandes (pattern Command)">
+        <packagedElement xmi:type="uml:Interface" xmi:id="p25_c10" name="Command" isAbstract="true">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o109" name="execute" visibility="public">
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="p25_c11" name="CommandAllumer">
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p25_r110" client="p25_c11" supplier="p25_c10" contract="p25_c10"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p58" name="model" visibility="private" type="p25_c3" association="p25_as56" aggregation="none"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o112" name="execute" visibility="public">
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="p25_c12" name="CommandEteindre">
+          <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p25_r113" client="p25_c12" supplier="p25_c10" contract="p25_c10"/>
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p61" name="model" visibility="private" type="p25_c3" association="p25_as59" aggregation="none"/>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o115" name="execute" visibility="public">
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="p25_pk131" name="Composants AWT (fournis par Java)">
+        <packagedElement xmi:type="uml:Class" xmi:id="p25_c13" name="Label">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o116" name="setText" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="p25_pa117" name="t" direction="in" type="p25_t73"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Class" xmi:id="p25_c14" name="Button">
+          <ownedAttribute xmi:type="uml:Property" xmi:id="p25_p47" name="actionListener" visibility="private" type="p25_c15" association="p25_as45" aggregation="none">
+            <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p25_lv119" value="0"/>
+            <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p25_uv120" value="*"/>
+          </ownedAttribute>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o121" name="setEnabled" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="p25_pa122" name="b" direction="in" type="p25_t71"/>
+          </ownedOperation>
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o123" name="addActionListener" visibility="public">
+            <ownedParameter xmi:type="uml:Parameter" xmi:id="p25_pa124" name="l" direction="in" type="p25_c15"/>
+          </ownedOperation>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Interface" xmi:id="p25_c15" name="ActionListener" isAbstract="true">
+          <ownedOperation xmi:type="uml:Operation" xmi:id="p25_o125" name="onClick" visibility="public">
+          </ownedOperation>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as16" memberEnd="p25_p18 p25_p17">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p17" type="p25_c1" association="p25_as16">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as19" memberEnd="p25_p21 p25_p20">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p20" type="p25_c1" association="p25_as19">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as22" memberEnd="p25_p24 p25_p23">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p23" type="p25_c1" association="p25_as22">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as25" memberEnd="p25_p27 p25_p26">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p26" type="p25_c1" association="p25_as25">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as28" memberEnd="p25_p30 p25_p29">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p29" type="p25_c3" association="p25_as28">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as31" memberEnd="p25_p33 p25_p32">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p32" type="p25_c3" association="p25_as31">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p25_lv34" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p25_uv35" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as36" memberEnd="p25_p38 p25_p37">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p37" type="p25_c5" association="p25_as36">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as39" memberEnd="p25_p41 p25_p40">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p40" type="p25_c6" association="p25_as39">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as42" memberEnd="p25_p44 p25_p43">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p43" type="p25_c7" association="p25_as42">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as45" memberEnd="p25_p47 p25_p46">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p46" type="p25_c14" association="p25_as45">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p25_lv48" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p25_uv49" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as50" memberEnd="p25_p52 p25_p51">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p51" type="p25_c8" association="p25_as50">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as53" memberEnd="p25_p55 p25_p54">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p54" type="p25_c9" association="p25_as53">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as56" memberEnd="p25_p58 p25_p57">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p57" type="p25_c11" association="p25_as56">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p25_as59" memberEnd="p25_p61 p25_p60">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p25_p60" type="p25_c12" association="p25_as59">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p25_t71" name="boolean"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p25_t73" name="String"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Memento">
+    <packagedElement xmi:type="uml:Package" xmi:id="p21_pk8" name="21 - Memento">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p21_cm9"><body>But : capturer et restaurer l'état d'un objet sans violer l'encapsulation.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p21_c1" name="Editeur">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p21_p10" name="texte" visibility="private" type="p21_t11"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p21_o12" name="ecrire" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p21_pa13" name="s" direction="in" type="p21_t11"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p21_o14" name="sauvegarder" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p21_pa15" direction="return" type="p21_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p21_o16" name="restaurer" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p21_pa17" name="s" direction="in" type="p21_c2"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p21_c2" name="Snapshot">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p21_p18" name="texte" visibility="private" type="p21_t11"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p21_o19" name="getTexte" visibility="package">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p21_pa20" direction="return" type="p21_t11"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p21_c3" name="Historique">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p21_p7" name="pile" visibility="private" type="p21_c2" association="p21_as5" aggregation="shared">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p21_lv22" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p21_uv23" value="*"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p21_o24" name="push" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p21_pa25" name="s" direction="in" type="p21_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p21_o26" name="pop" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p21_pa27" direction="return" type="p21_c2"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p21_as5" name="stocke" memberEnd="p21_p7 p21_p6">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p21_p6" type="p21_c3" association="p21_as5">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p21_d4" name="crée / relit" client="p21_c1" supplier="p21_c2"/>
+      <ownedComment xmi:type="uml:Comment" xmi:id="p21_cm28" annotatedElement="p21_c1"><body>Originator</body></ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="p21_cm29" annotatedElement="p21_c2"><body>Memento</body></ownedComment>
+      <ownedComment xmi:type="uml:Comment" xmi:id="p21_cm30" annotatedElement="p21_c3"><body>Caretaker</body></ownedComment>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p21_t11" name="String"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

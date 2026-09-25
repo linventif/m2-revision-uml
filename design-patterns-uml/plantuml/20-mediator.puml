@@ -1,0 +1,37 @@
+@startuml 20-mediator
+!pragma layout smetana
+title Mediator — Comportement
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+interface ChatRoom <<interface>> {
+  +envoyer(msg : String, de : Utilisateur)
+}
+class ChatRoomImpl {
+  -membres : List<Utilisateur>
+  +envoyer(msg : String, de : Utilisateur)
+}
+class Utilisateur {
+  -nom : String
+  -chat : ChatRoom
+  +ecrire(msg : String)
+  +recevoir(msg : String)
+}
+
+ChatRoom <|.. ChatRoomImpl
+ChatRoomImpl "1" o-- "*" Utilisateur : redistribue
+Utilisateur --> ChatRoom : passe par
+
+legend bottom left
+**But :** centraliser la communication entre objets pour qu'ils ne se connaissent pas
+directement.
+ 
+**Lecture :** remarque qu'il n'y a **aucune flèche ""Utilisateur → Utilisateur""**. Chaque
+utilisateur ne connaît que la ""ChatRoom"". ""ecrire()"" appelle ""chat.envoyer()"", et c'est
+le médiateur qui appelle ""recevoir()"" sur tous les autres. Au lieu de N × N liens, on a N
+liens vers un hub.
+endlegend
+@enduml

@@ -1,0 +1,49 @@
+@startuml 21-memento
+!pragma layout smetana
+title Memento — Comportement
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Editeur {
+  -texte : String
+  +ecrire(s : String)
+  +sauvegarder() : Snapshot
+  +restaurer(s : Snapshot)
+}
+class Snapshot {
+  -texte : String
+  ~getTexte() : String
+}
+class Historique {
+  -pile : Deque<Snapshot>
+  +push(s : Snapshot)
+  +pop() : Snapshot
+}
+
+Editeur ..> Snapshot : crée / relit
+Historique o-- Snapshot : stocke
+
+note bottom of Editeur
+Originator
+end note
+
+note bottom of Snapshot
+Memento
+end note
+
+note bottom of Historique
+Caretaker
+end note
+
+legend bottom left
+**But :** capturer et restaurer l'état d'un objet **sans violer l'encapsulation**.
+ 
+**Lecture :** ""Editeur"" (Originator) produit un ""Snapshot"" (Memento), une photo figée de
+son état. ""Historique"" (Caretaker) empile ces photos **sans jamais les ouvrir** :
+""getTexte()"" n'est visible que dans le package (""∼""), donc seul l'""Editeur"" peut les
+relire. L'encapsulation est préservée.
+endlegend
+@enduml

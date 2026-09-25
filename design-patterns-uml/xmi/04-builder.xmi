@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Builder">
+    <packagedElement xmi:type="uml:Package" xmi:id="p04_pk6" name="04 - Builder">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p04_cm7"><body>But : construire un objet complexe étape par étape.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p04_c1" name="Pizza">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p04_p8" name="taille" visibility="private" type="p04_t9"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p04_p10" name="fromage" visibility="private" type="p04_t11"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p04_p12" name="jambon" visibility="private" type="p04_t11"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p04_o13" name="Pizza" visibility="private">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p04_pa14" name="b" direction="in" type="p04_c2"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p04_c2" name="Builder">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p04_p15" name="taille" visibility="private" type="p04_t9"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p04_p16" name="fromage" visibility="private" type="p04_t11"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p04_p17" name="jambon" visibility="private" type="p04_t11"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p04_o18" name="Builder" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p04_pa19" name="taille" direction="in" type="p04_t9"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p04_o20" name="fromage" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p04_pa21" direction="return" type="p04_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p04_o22" name="jambon" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p04_pa23" direction="return" type="p04_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p04_o24" name="build" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p04_pa25" direction="return" type="p04_c1"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p04_c3" name="Client">
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p04_d4" name="1. configure" client="p04_c3" supplier="p04_c2"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p04_d5" name="2. build() crée" client="p04_c2" supplier="p04_c1"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p04_t9" name="String"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p04_t11" name="boolean"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

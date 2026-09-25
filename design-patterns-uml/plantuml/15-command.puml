@@ -1,0 +1,48 @@
+@startuml 15-command
+!pragma layout smetana
+title Command — Comportement
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Telecommande {
+  -historique : Deque<Commande>
+  +appuyer(c : Commande)
+  +undo()
+}
+interface Commande <<interface>> {
+  +executer()
+  +annuler()
+}
+class AllumerLampe {
+  -lampe : Lampe
+  +executer()
+  +annuler()
+}
+class EteindreLampe {
+  -lampe : Lampe
+  +executer()
+  +annuler()
+}
+class Lampe {
+  +on()
+  +off()
+}
+
+Telecommande o-- Commande : stocke
+Commande <|.. AllumerLampe
+Commande <|.. EteindreLampe
+AllumerLampe --> Lampe : agit sur
+EteindreLampe --> Lampe : agit sur
+
+legend bottom left
+**But :** transformer une requête en **objet** (qu'on peut stocker, annuler, mettre en file).
+ 
+**Lecture :** trois rôles, dans le sens des flèches. L'**invocateur** (""Telecommande"") ne
+sait rien faire lui-même : il appelle ""executer()"" et empile la commande pour pouvoir faire
+""undo()"". La **commande** (""AllumerLampe"") est l'action transformée en objet. Le
+**récepteur** (""Lampe"") fait le vrai travail.
+endlegend
+@enduml

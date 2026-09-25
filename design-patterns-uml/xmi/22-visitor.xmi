@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Visitor">
+    <packagedElement xmi:type="uml:Package" xmi:id="p22_pk8" name="22 - Visitor">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p22_cm9"><body>But : ajouter une opération à une hiérarchie de classes sans modifier ces classes.</body></ownedComment>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p22_c1" name="Forme" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p22_o10" name="accept" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p22_pa11" name="v" direction="in" type="p22_c4"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p22_c2" name="Cercle">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p22_r12" client="p22_c2" supplier="p22_c1" contract="p22_c1"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p22_o13" name="accept" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p22_pa14" name="v" direction="in" type="p22_c4"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p22_c3" name="Carre">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p22_r15" client="p22_c3" supplier="p22_c1" contract="p22_c1"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p22_o16" name="accept" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p22_pa17" name="v" direction="in" type="p22_c4"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p22_c4" name="Visiteur" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p22_o18" name="visit" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p22_pa19" name="c" direction="in" type="p22_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p22_o20" name="visit" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p22_pa21" name="c" direction="in" type="p22_c3"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p22_c5" name="ExportXML">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p22_r22" client="p22_c5" supplier="p22_c4" contract="p22_c4"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p22_o23" name="visit" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p22_pa24" name="c" direction="in" type="p22_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p22_o25" name="visit" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p22_pa26" name="c" direction="in" type="p22_c3"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p22_c6" name="CalculAire">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p22_r27" client="p22_c6" supplier="p22_c4" contract="p22_c4"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p22_o28" name="visit" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p22_pa29" name="c" direction="in" type="p22_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p22_o30" name="visit" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p22_pa31" name="c" direction="in" type="p22_c3"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p22_d7" name="accept(v)" client="p22_c1" supplier="p22_c4"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

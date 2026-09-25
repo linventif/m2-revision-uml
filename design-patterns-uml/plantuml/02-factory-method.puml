@@ -1,0 +1,42 @@
+@startuml 02-factory-method
+!pragma layout smetana
+title Factory Method — Création
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+abstract class Transport <<abstract>> {
+  +livrer()
+  {abstract} +creerVehicule() : Vehicule
+}
+class TransportRoute {
+  +creerVehicule() : Vehicule
+}
+class TransportMer {
+  +creerVehicule() : Vehicule
+}
+interface Vehicule <<interface>> {
+  +rouler()
+}
+class Camion
+class Bateau
+
+Transport <|-- TransportRoute
+Transport <|-- TransportMer
+Vehicule <|.. Camion
+Vehicule <|.. Bateau
+Transport ..> Vehicule : utilise
+TransportRoute ..> Camion : crée
+TransportMer ..> Bateau : crée
+
+legend bottom left
+**But :** laisser les sous-classes décider quelle classe concrète instancier.
+ 
+**Lecture :** il y a deux hiérarchies en parallèle : les **créateurs** (""Transport…"") et les
+**produits** (""Vehicule"", ""Camion"", ""Bateau""). ""Transport.livrer()"" ne manipule que
+l'interface ""Vehicule"". C'est chaque sous-classe qui choisit le ""new"" en redéfinissant
+""creerVehicule()"", la « factory method » (en italique car abstraite).
+endlegend
+@enduml

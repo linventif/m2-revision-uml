@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Factory Method">
+    <packagedElement xmi:type="uml:Package" xmi:id="p02_pk10" name="02 - Factory Method">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p02_cm11"><body>But : laisser les sous-classes décider quelle classe concrète instancier.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p02_c1" name="Transport" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p02_o12" name="livrer" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p02_o13" name="creerVehicule" visibility="public" isAbstract="true">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p02_pa14" direction="return" type="p02_c4"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p02_c2" name="TransportRoute">
+        <generalization xmi:type="uml:Generalization" xmi:id="p02_g15" general="p02_c1"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p02_o16" name="creerVehicule" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p02_pa17" direction="return" type="p02_c4"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p02_c3" name="TransportMer">
+        <generalization xmi:type="uml:Generalization" xmi:id="p02_g18" general="p02_c1"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p02_o19" name="creerVehicule" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p02_pa20" direction="return" type="p02_c4"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p02_c4" name="Vehicule" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p02_o21" name="rouler" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p02_c5" name="Camion">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p02_r22" client="p02_c5" supplier="p02_c4" contract="p02_c4"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p02_c6" name="Bateau">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p02_r23" client="p02_c6" supplier="p02_c4" contract="p02_c4"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p02_d7" name="utilise" client="p02_c1" supplier="p02_c4"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p02_d8" name="crée" client="p02_c2" supplier="p02_c5"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p02_d9" name="crée" client="p02_c3" supplier="p02_c6"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

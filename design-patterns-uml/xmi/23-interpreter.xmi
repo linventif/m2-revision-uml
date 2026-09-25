@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Interpreter">
+    <packagedElement xmi:type="uml:Package" xmi:id="p23_pk15" name="23 - Interpreter">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p23_cm16"><body>But : définir une grammaire et un interpréteur pour un petit langage.</body></ownedComment>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p23_c1" name="Expression" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p23_o17" name="interpreter" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p23_pa18" direction="return" type="p23_t19"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p23_c2" name="Nombre">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p23_r20" client="p23_c2" supplier="p23_c1" contract="p23_c1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p23_p21" name="valeur" visibility="private" type="p23_t19"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p23_o22" name="interpreter" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p23_pa23" direction="return" type="p23_t19"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p23_c3" name="Addition">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p23_r24" client="p23_c3" supplier="p23_c1" contract="p23_c1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p23_p7" name="gauche" visibility="private" type="p23_c1" association="p23_as5" aggregation="shared">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p23_lv26" value="2"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p23_uv27" value="2"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p23_p28" name="droite" visibility="private" type="p23_c1"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p23_o29" name="interpreter" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p23_pa30" direction="return" type="p23_t19"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p23_c4" name="Multiplication">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p23_r31" client="p23_c4" supplier="p23_c1" contract="p23_c1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p23_p12" name="gauche" visibility="private" type="p23_c1" association="p23_as10" aggregation="shared">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p23_lv33" value="2"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p23_uv34" value="2"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p23_p35" name="droite" visibility="private" type="p23_c1"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p23_o36" name="interpreter" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p23_pa37" direction="return" type="p23_t19"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p23_as5" memberEnd="p23_p7 p23_p6">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p23_p6" type="p23_c3" association="p23_as5">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p23_lv8" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p23_uv9" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p23_as10" memberEnd="p23_p12 p23_p11">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p23_p11" type="p23_c4" association="p23_as10">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p23_lv13" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p23_uv14" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p23_t19" name="int"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

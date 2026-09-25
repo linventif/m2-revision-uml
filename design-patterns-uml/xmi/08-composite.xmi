@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Composite">
+    <packagedElement xmi:type="uml:Package" xmi:id="p08_pk9" name="08 - Composite">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p08_cm10"><body>But : traiter uniformément un objet simple et un groupe d'objets (structure en arbre).</body></ownedComment>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p08_c1" name="Element" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p08_o11" name="taille" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p08_pa12" direction="return" type="p08_t13"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p08_c2" name="Fichier">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p08_r14" client="p08_c2" supplier="p08_c1" contract="p08_c1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p08_p15" name="octets" visibility="private" type="p08_t13"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p08_o16" name="taille" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p08_pa17" direction="return" type="p08_t13"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p08_c3" name="Dossier">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p08_r18" client="p08_c3" supplier="p08_c1" contract="p08_c1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p08_p6" name="enfants" visibility="private" type="p08_c1" association="p08_as4" aggregation="shared">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p08_lv20" value="0"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p08_uv21" value="*"/>
+        </ownedAttribute>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p08_o22" name="ajouter" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p08_pa23" name="e" direction="in" type="p08_c1"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p08_o24" name="taille" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p08_pa25" direction="return" type="p08_t13"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p08_as4" name="contient" memberEnd="p08_p6 p08_p5">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p08_p5" type="p08_c3" association="p08_as4">
+          <lowerValue xmi:type="uml:LiteralInteger" xmi:id="p08_lv7" value="1"/>
+          <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="p08_uv8" value="1"/>
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p08_t13" name="long"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

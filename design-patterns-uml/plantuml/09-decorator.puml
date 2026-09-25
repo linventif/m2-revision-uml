@@ -1,0 +1,40 @@
+@startuml 09-decorator
+!pragma layout smetana
+title Decorator — Structure
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+interface Boisson <<interface>> {
+  +prix() : double
+}
+class Cafe {
+  +prix() : double
+}
+abstract class BoissonDecorator <<abstract>> {
+  #boisson : Boisson
+}
+class Lait {
+  +prix() : double
+}
+class Sucre {
+  +prix() : double
+}
+
+Boisson <|.. Cafe
+Boisson <|.. BoissonDecorator
+BoissonDecorator o-- Boisson : enveloppe
+BoissonDecorator <|-- Lait
+BoissonDecorator <|-- Sucre
+
+legend bottom left
+**But :** ajouter des responsabilités à un objet **dynamiquement**, sans héritage.
+ 
+**Lecture :** entre ""BoissonDecorator"" et ""Boisson"", il y a **deux liens**. Le décorateur
+**est** une ""Boisson"" (▷) **et a** une ""Boisson"" (◇). Comme il en est une, on peut le
+mettre dans un autre décorateur : ""new Sucre(new Lait(new Cafe()))"". Chaque ""prix()"" ajoute
+son supplément puis appelle celui de la boisson enveloppée.
+endlegend
+@enduml

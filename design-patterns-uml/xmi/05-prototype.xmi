@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Prototype">
+    <packagedElement xmi:type="uml:Package" xmi:id="p05_pk8" name="05 - Prototype">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p05_cm9"><body>But : créer un objet en clonant un existant.</body></ownedComment>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p05_c1" name="Forme" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p05_o10" name="cloner" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p05_pa11" direction="return" type="p05_c1"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p05_c2" name="Cercle">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p05_r12" client="p05_c2" supplier="p05_c1" contract="p05_c1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p05_p13" name="rayon" visibility="private" type="p05_t14"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p05_o15" name="cloner" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p05_pa16" direction="return" type="p05_c1"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p05_c3" name="Rectangle">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p05_r17" client="p05_c3" supplier="p05_c1" contract="p05_c1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p05_p18" name="largeur" visibility="private" type="p05_t14"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p05_p19" name="hauteur" visibility="private" type="p05_t14"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p05_o20" name="cloner" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p05_pa21" direction="return" type="p05_c1"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p05_c4" name="Client">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p05_p7" name="forme" visibility="private" type="p05_c1" association="p05_as5" aggregation="none"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p05_as5" name="original.cloner()" memberEnd="p05_p7 p05_p6">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p05_p6" type="p05_c4" association="p05_as5">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p05_t14" name="int"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

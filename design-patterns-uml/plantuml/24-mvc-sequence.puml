@@ -1,0 +1,28 @@
+@startuml 24-mvc-sequence
+!pragma layout smetana
+title MVC — déroulement
+skinparam defaultFontName Arial
+skinparam shadowing false
+autonumber
+
+actor "Utilisateur" as U
+participant "btn10 : Button" as B
+participant "Controller10" as C
+participant "Model" as M
+participant "ViewLabelNum" as VN
+participant "ViewLabelText" as VT
+participant "lblNum : Label" as LN
+participant "lblText : Label" as LT
+U -> B : clic
+B -> C : actionPerformed(e)
+C -> M : setValue(10)
+M -> M : fireNotify()
+M -> VN : notify(this)
+VN -> M : getValue()
+M --> VN : 10
+VN -> LN : setText("10")
+M -> VT : notify(this)
+VT -> M : getValue()
+M --> VT : 10
+VT -> LT : setText("dix")
+@enduml

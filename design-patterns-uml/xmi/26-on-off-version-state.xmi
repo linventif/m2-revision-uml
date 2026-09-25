@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="ON/OFF : version State">
+    <packagedElement xmi:type="uml:Package" xmi:id="p26_pk14" name="26 - ON/OFF : version State">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p26_cm15"><body>But : remplacer le booléen allume et les if du Model par le pattern State : chaque état du diagramme d'états devient une classe.</body></ownedComment>
+      <packagedElement xmi:type="uml:Class" xmi:id="p26_c1" name="Model">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p26_p16" name="textToDisplay" visibility="private" type="p26_t17"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p26_p8" name="etat" visibility="private" type="p26_c2" association="p26_as6" aggregation="none"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p26_p11" name="nf" visibility="private" type="p26_c5" association="p26_as9" aggregation="none"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o20" name="allumer" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o21" name="eteindre" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o22" name="getTextToDisplay" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa23" direction="return" type="p26_t17"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o24" name="isONEnabled" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa25" direction="return" type="p26_t26"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o27" name="isOFFEnabled" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa28" direction="return" type="p26_t26"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o29" name="setEtat" visibility="package">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa30" name="e" direction="in" type="p26_c2"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o31" name="setText" visibility="package">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa32" name="t" direction="in" type="p26_t17"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o33" name="getNf" visibility="package">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa34" direction="return" type="p26_c5"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p26_c2" name="Etat" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o35" name="allumer" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa36" name="m" direction="in" type="p26_c1"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o37" name="eteindre" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa38" name="m" direction="in" type="p26_c1"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o39" name="isONEnabled" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa40" direction="return" type="p26_t26"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o41" name="isOFFEnabled" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa42" direction="return" type="p26_t26"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p26_c3" name="EtatEteint">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p26_r43" client="p26_c3" supplier="p26_c2" contract="p26_c2"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p26_p44" name="INSTANCE" visibility="public" type="p26_c3" isStatic="true"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o45" name="EtatEteint" visibility="private">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o46" name="allumer" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa47" name="m" direction="in" type="p26_c1"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o48" name="eteindre" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa49" name="m" direction="in" type="p26_c1"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o50" name="isONEnabled" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa51" direction="return" type="p26_t26"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o52" name="isOFFEnabled" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa53" direction="return" type="p26_t26"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p26_c4" name="EtatAllume">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p26_r54" client="p26_c4" supplier="p26_c2" contract="p26_c2"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p26_p55" name="INSTANCE" visibility="public" type="p26_c4" isStatic="true"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o56" name="EtatAllume" visibility="private">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o57" name="allumer" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa58" name="m" direction="in" type="p26_c1"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o59" name="eteindre" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa60" name="m" direction="in" type="p26_c1"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o61" name="isONEnabled" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa62" direction="return" type="p26_t26"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o63" name="isOFFEnabled" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p26_pa64" direction="return" type="p26_t26"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p26_c5" name="NoyauFonctionnel">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o65" name="allumer" visibility="public">
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p26_o66" name="eteindre" visibility="public">
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p26_as6" memberEnd="p26_p8 p26_p7">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p26_p7" type="p26_c1" association="p26_as6">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p26_as9" memberEnd="p26_p11 p26_p10">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p26_p10" type="p26_c1" association="p26_as9">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p26_d12" name="allumer()" client="p26_c3" supplier="p26_c4"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p26_d13" name="eteindre()" client="p26_c4" supplier="p26_c3"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p26_t17" name="String"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p26_t26" name="boolean"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

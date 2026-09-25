@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://schema.omg.org/spec/UML/2.1">
+  <uml:Model xmi:type="uml:Model" xmi:id="model" name="Iterator">
+    <packagedElement xmi:type="uml:Package" xmi:id="p18_pk11" name="18 - Iterator">
+      <ownedComment xmi:type="uml:Comment" xmi:id="p18_cm12"><body>But : parcourir une collection sans exposer sa structure interne.</body></ownedComment>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p18_c1" name="Iterable&lt;T&gt;" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p18_o13" name="iterator" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p18_pa14" direction="return" type="p18_c2"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Interface" xmi:id="p18_c2" name="Iterator&lt;T&gt;" isAbstract="true">
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p18_o15" name="hasNext" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p18_pa16" direction="return" type="p18_t17"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p18_o18" name="next" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p18_pa19" direction="return" type="p18_t20"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p18_c3" name="Playlist">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p18_r21" client="p18_c3" supplier="p18_c1" contract="p18_c1"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p18_p22" name="chansons" visibility="private" type="p18_t23"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p18_o24" name="iterator" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p18_pa25" direction="return" type="p18_c2"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p18_c4" name="PlaylistIterator">
+        <interfaceRealization xmi:type="uml:InterfaceRealization" xmi:id="p18_r26" client="p18_c4" supplier="p18_c2" contract="p18_c2"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p18_p27" name="index" visibility="private" type="p18_t28"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="p18_p9" name="parcourt" visibility="private" type="p18_c3" association="p18_as7" aggregation="none"/>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p18_o30" name="hasNext" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p18_pa31" direction="return" type="p18_t17"/>
+        </ownedOperation>
+        <ownedOperation xmi:type="uml:Operation" xmi:id="p18_o32" name="next" visibility="public">
+          <ownedParameter xmi:type="uml:Parameter" xmi:id="p18_pa33" direction="return" type="p18_t34"/>
+        </ownedOperation>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="p18_c5" name="Client">
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="p18_as7" name="parcourt" memberEnd="p18_p9 p18_p8">
+        <ownedEnd xmi:type="uml:Property" xmi:id="p18_p8" type="p18_c4" association="p18_as7">
+        </ownedEnd>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p18_d6" name="crée" client="p18_c3" supplier="p18_c4"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="p18_d10" name="hasNext() / next()" client="p18_c5" supplier="p18_c2"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p18_t17" name="boolean"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p18_t20" name="T"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p18_t23" name="List&lt;Chanson&gt;"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p18_t28" name="int"/>
+      <packagedElement xmi:type="uml:DataType" xmi:id="p18_t34" name="Chanson"/>
+    </packagedElement>
+  </uml:Model>
+</xmi:XMI>

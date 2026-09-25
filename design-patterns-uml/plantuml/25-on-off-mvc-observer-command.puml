@@ -1,0 +1,101 @@
+@startuml 25-on-off-mvc-observer-command
+!pragma layout smetana
+title ON/OFF : MVC + Observer + Command — Révision
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Application
+class NoyauFonctionnel #FFF6BF {
+  +allumer()
+  +eteindre()
+}
+class Model #DDEBFF {
+  -allume : boolean
+  -textToDisplay : String
+  +allumer()
+  +eteindre()
+  +getTextToDisplay() : String
+  +isONEnabled() : boolean
+  +isOFFEnabled() : boolean
+  +addModelListener(l : ModelListener)
+  -fireNotify()
+}
+interface ModelListener <<interface>> #DDEBFF {
+  +notify(m : Model)
+}
+class LabelView #DFF5E1 {
+  +notify(m : Model)
+}
+class ONEnabling #DFF5E1 {
+  +notify(m : Model)
+}
+class OFFEnabling #DFF5E1 {
+  +notify(m : Model)
+}
+class CtrlON #FFE4CC {
+  +onClick()
+}
+class CtrlOFF #FFE4CC {
+  +onClick()
+}
+interface Command <<interface>> #EDE3FF {
+  +execute()
+}
+class CommandAllumer #EDE3FF {
+  +execute()
+}
+class CommandEteindre #EDE3FF {
+  +execute()
+}
+class Label #EEEEEE {
+  +setText(t : String)
+}
+class Button #EEEEEE {
+  +setEnabled(b : boolean)
+  +addActionListener(l : ActionListener)
+}
+interface ActionListener <<interface>> #EEEEEE {
+  +onClick()
+}
+
+Application *-- "-lblStatus" Label
+Application *-- "-btnON\n-btnOFF" Button
+Application --> "-model" Model
+Model --> "-nf" NoyauFonctionnel
+Model "1" --> "-modelListeners *" ModelListener
+ModelListener <|.. LabelView
+ModelListener <|.. ONEnabling
+ModelListener <|.. OFFEnabling
+LabelView -right-> "-label" Label
+ONEnabling --> "-btn" Button
+OFFEnabling --> "-btn" Button
+Button "1" --> "*" ActionListener
+ActionListener <|.. CtrlON
+ActionListener <|.. CtrlOFF
+CtrlON --> "-command" Command
+CtrlOFF --> "-command" Command
+Command <|.. CommandAllumer
+Command <|.. CommandEteindre
+CommandAllumer --> "-model" Model
+CommandEteindre --> "-model" Model
+
+legend bottom left
+**But :** traduire l'énoncé en MVC : le ""Model"" enveloppe le noyau fonctionnel, 3 vues se
+mettent à jour toutes seules (Observer), et chaque bouton déclenche une ""Command"".
+ 
+**Couleurs :** <back:#FFF6BF> jaune </back> = Noyau fonctionnel, <back:#DDEBFF> bleu </back> = Modèle, <back:#DFF5E1> vert </back> = Vue, <back:#FFE4CC> orange </back> = Contrôleur, <back:#EDE3FF> violet </back> = Commandes (pattern Command), <back:#EEEEEE> gris </back> = Composants AWT (fournis par Java)
+ 
+**Lecture :** c'est le MVC du cours avec **Observer deux fois** et **Command** en plus.
+Observer n°1 : ""Button → ActionListener"", le bouton prévient son contrôleur. Observer n°2 :
+""Model → ModelListener"", le modèle prévient ses 3 vues. Command : ""CtrlON"" ne sait pas ce
+qu'il déclenche, il appelle juste ""command.execute()"". Les rôles du pattern Command sont :
+**invocateur** = ""CtrlON"" / ""CtrlOFF"", **commande** = ""CommandAllumer"" /
+""CommandEteindre"", **récepteur** = ""Model"". Le ""Model"" enveloppe le ""NoyauFonctionnel""
+et ajoute ce dont l'IHM a besoin : le texte à afficher et les boutons actifs. Les vues ne font
+que **lire** le modèle : ""LabelView"" affiche le texte, ""ONEnabling"" et ""OFFEnabling""
+grisent les boutons.
+endlegend
+@enduml

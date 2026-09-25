@@ -1,0 +1,46 @@
+@startuml 03-abstract-factory
+!pragma layout smetana
+title Abstract Factory — Création
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+interface UIFactory <<interface>> {
+  +creerBouton() : Bouton
+  +creerMenu() : Menu
+}
+interface Bouton <<interface>>
+interface Menu <<interface>>
+class Application {
+  -factory : UIFactory
+}
+class MacFactory
+class WinFactory
+class MacBouton
+class WinBouton
+class MacMenu
+class WinMenu
+
+Application --> UIFactory
+UIFactory <|.. MacFactory
+UIFactory <|.. WinFactory
+MacBouton .down.|> Bouton
+WinBouton .down.|> Bouton
+MacMenu .down.|> Menu
+WinMenu .down.|> Menu
+MacFactory ..> MacBouton : crée
+MacFactory ..> MacMenu : crée
+WinFactory ..> WinBouton : crée
+WinFactory ..> WinMenu : crée
+MacMenu -[hidden]right- WinBouton
+
+legend bottom left
+**But :** créer des **familles** d'objets liés sans préciser leurs classes concrètes.
+ 
+**Lecture :** suis les flèches « crée » : ""MacFactory"" ne crée que des objets ""Mac…"", et
+""WinFactory"" que des ""Win…"". ""Application"" ne connaît que les 3 interfaces. On change
+tout le thème en changeant une seule factory.
+endlegend
+@enduml

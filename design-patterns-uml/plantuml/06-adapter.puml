@@ -1,0 +1,38 @@
+@startuml 06-adapter
+!pragma layout smetana
+title Adapter — Structure
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Appareil
+interface PriseFR <<interface>> {
+  +brancher()
+}
+class PriseAdapter {
+  -us : PriseUS
+  +brancher()
+}
+class PriseUS {
+  +plugIn()
+}
+
+Appareil --> PriseFR : attend
+PriseFR <|.. PriseAdapter
+PriseAdapter --> PriseUS : wrappe
+
+note bottom of PriseUS
+classe existante
+qu'on ne peut pas modifier
+end note
+
+legend bottom left
+**But :** rendre compatible une interface existante avec celle attendue.
+ 
+**Lecture :** en suivant les flèches, ""Appareil"" veut une ""PriseFR"". ""PriseAdapter""
+**est** une ""PriseFR"" (il l'implémente) et **contient** une ""PriseUS"". Son ""brancher()""
+appelle juste ""us.plugIn()"" : il ne fait que traduire l'appel.
+endlegend
+@enduml

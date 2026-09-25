@@ -1,0 +1,69 @@
+@startuml 26-on-off-version-state
+!pragma layout smetana
+title ON/OFF : version State — Révision
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Model {
+  -textToDisplay : String
+  +allumer()
+  +eteindre()
+  +getTextToDisplay() : String
+  +isONEnabled() : boolean
+  +isOFFEnabled() : boolean
+  ~setEtat(e : Etat)
+  ~setText(t : String)
+  ~getNf() : NoyauFonctionnel
+}
+interface Etat <<interface>> {
+  +allumer(m : Model)
+  +eteindre(m : Model)
+  +isONEnabled() : boolean
+  +isOFFEnabled() : boolean
+}
+class EtatEteint {
+  {static} +INSTANCE : EtatEteint
+  -EtatEteint()
+  +allumer(m : Model)
+  +eteindre(m : Model)
+  +isONEnabled() : boolean
+  +isOFFEnabled() : boolean
+}
+class EtatAllume {
+  {static} +INSTANCE : EtatAllume
+  -EtatAllume()
+  +allumer(m : Model)
+  +eteindre(m : Model)
+  +isONEnabled() : boolean
+  +isOFFEnabled() : boolean
+}
+class NoyauFonctionnel {
+  +allumer()
+  +eteindre()
+}
+
+Model --> "-etat" Etat
+Model --> "-nf" NoyauFonctionnel
+Etat <|.. EtatEteint
+Etat <|.. EtatAllume
+EtatEteint ..> EtatAllume : allumer()
+EtatAllume ..> EtatEteint : eteindre()
+
+legend bottom left
+**But :** remplacer le booléen ""allume"" et les ""if"" du ""Model"" par le **pattern State** :
+chaque état du diagramme d'états devient une classe.
+ 
+**Lecture :** on passe du diagramme d'états au diagramme de classes **mécaniquement**. Chaque
+**état** devient une classe (""EtatEteint"", ""EtatAllume""), chaque **événement** devient une
+méthode de l'interface ""Etat"" (""allumer"", ""eteindre""), et chaque **case de la matrice**
+devient le corps d'une méthode. Une case avec action : on fait l'action, puis
+""m.setEtat(...)"" vers l'état suivant. Une case ✗ : méthode vide, et le ""isXEnabled()""
+correspondant renvoie ""false"". ""Model.allumer()"" se contente de déléguer
+(""etat.allumer(this)"") : plus aucun ""if"". Les états n'ont pas d'attributs, donc une seule
+instance suffit : c'est un **Singleton** (""EtatAllume.INSTANCE"", constructeur privé). Les
+vues, contrôleurs, commandes et ""Application"" ne changent pas.
+endlegend
+@enduml

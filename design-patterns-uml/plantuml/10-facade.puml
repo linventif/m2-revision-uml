@@ -1,0 +1,40 @@
+@startuml 10-facade
+!pragma layout smetana
+title Facade — Structure
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+class Client
+class HomeCinema {
+  +regarderFilm()
+  +arreterFilm()
+}
+class Ampli {
+  +on()
+  +setVolume(v : int)
+}
+class Projecteur {
+  +on()
+  +modeCinema()
+}
+class Lecteur {
+  +on()
+  +play(film : String)
+}
+
+Client --> HomeCinema : 1 seul appel
+HomeCinema --> Ampli
+HomeCinema --> Projecteur
+HomeCinema --> Lecteur
+
+legend bottom left
+**But :** fournir une interface **simple** à un sous-système complexe.
+ 
+**Lecture :** le ""Client"" n'a **qu'une flèche**, vers la façade. Il ne connaît ni ""Ampli"",
+ni ""Projecteur"", ni ""Lecteur"". C'est ""HomeCinema"" qui orchestre les appels dans le bon
+ordre.
+endlegend
+@enduml

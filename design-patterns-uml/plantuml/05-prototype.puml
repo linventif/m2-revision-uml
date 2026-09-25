@@ -1,0 +1,35 @@
+@startuml 05-prototype
+!pragma layout smetana
+title Prototype — Création
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+interface Forme <<interface>> {
+  +cloner() : Forme
+}
+class Cercle {
+  -rayon : int
+  +cloner() : Forme
+}
+class Rectangle {
+  -largeur : int
+  -hauteur : int
+  +cloner() : Forme
+}
+class Client
+
+Forme <|.. Cercle
+Forme <|.. Rectangle
+Client --> Forme : original.cloner()
+
+legend bottom left
+**But :** créer un objet en **clonant** un existant.
+ 
+**Lecture :** le client ne connaît que ""Forme"" et appelle ""cloner()"" sans savoir si c'est
+un cercle ou un rectangle. Chaque classe sait se recopier elle-même
+(""return new Cercle(this)"").
+endlegend
+@enduml

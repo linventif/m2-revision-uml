@@ -1,0 +1,34 @@
+@startuml 08-composite
+!pragma layout smetana
+title Composite — Structure
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+interface Element <<interface>> {
+  +taille() : long
+}
+class Fichier {
+  -octets : long
+  +taille() : long
+}
+class Dossier {
+  -enfants : List<Element>
+  +ajouter(e : Element)
+  +taille() : long
+}
+
+Element <|.. Fichier
+Element <|.. Dossier
+Dossier "1" o-- "*" Element : contient
+
+legend bottom left
+**But :** traiter uniformément un objet simple et un groupe d'objets (structure en **arbre**).
+ 
+**Lecture :** le point clé est le losange qui **remonte** de ""Dossier"" vers ""Element"", et
+non vers ""Fichier"". Un dossier contient donc des ""Element"", c'est-à-dire des fichiers
+**ou d'autres dossiers**, d'où l'arbre. ""Fichier"" est une **feuille** : il n'a pas d'enfants.
+endlegend
+@enduml

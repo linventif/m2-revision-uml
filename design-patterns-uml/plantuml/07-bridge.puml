@@ -1,0 +1,42 @@
+@startuml 07-bridge
+!pragma layout smetana
+title Bridge — Structure
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide empty members
+
+abstract class Telecommande <<abstract>> {
+  #appareil : Appareil
+  +allumer()
+  +volumePlus()
+}
+class TelecommandeAvancee {
+  +couperSon()
+}
+interface Appareil <<interface>> {
+  +on()
+  +off()
+  +setVolume(v : int)
+}
+class TelecommandeSimple
+class TV
+class Radio
+
+Telecommande <|-- TelecommandeSimple
+Telecommande <|-- TelecommandeAvancee
+Telecommande o-right- Appareil : le pont
+Appareil <|.. TV
+Appareil <|.. Radio
+
+legend bottom left
+**But :** séparer une **abstraction** de son **implémentation** pour les faire varier
+indépendamment.
+ 
+**Lecture :** le diagramme a **deux hiérarchies indépendantes**, les télécommandes d'un côté et
+les appareils de l'autre, reliées par **un seul lien ◇** : c'est le « pont ». Sans lui, il
+faudrait ""TelecommandeSimpleTV"", ""TelecommandeSimpleRadio"", ""TelecommandeAvanceeTV""… soit
+une classe par combinaison. Avec lui, on ajoute juste une classe d'un côté.
+endlegend
+@enduml
